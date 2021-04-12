@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  resurface:
+    image: docker.resurface.io/release/pilot
+    container_name: jersey_resurface
+    ports:
+      - '4000:4000'
+      - '4001:4001'
+      - '4002:4002'
+
+  jersey:
+    image: test-jersey:latest
+    container_name: test_jersey_app
+    command: mvn exec:java
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
