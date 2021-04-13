@@ -14,7 +14,7 @@ bash:
 	@docker exec -it jersey bash
 
 logs:
-	@docker logs -f jersey
+	@docker logs -f test_jersey_app
 
 ping:
 	@curl "http://localhost/ping"

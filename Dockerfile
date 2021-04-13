@@ -8,7 +8,7 @@ WORKDIR /opt/app
 # selectively add the POM file and
 # install dependencies
 COPY pom.xml /opt/app/
-RUN mvn install
+RUN mvn clean install
 
 # rest of the project
 COPY src /opt/app/src

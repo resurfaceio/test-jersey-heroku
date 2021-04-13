@@ -12,7 +12,7 @@ services:
   jersey:
     image: test-jersey:latest
     container_name: test_jersey_app
-    command: mvn exec:java
+    command: mvn clean compile exec:java
     ports:
       - '8080:8080'
     env_file:

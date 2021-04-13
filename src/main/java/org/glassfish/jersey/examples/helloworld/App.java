@@ -52,10 +52,11 @@ import org.glassfish.grizzly.http.server.HttpServer;
 
 /**
  * Hello world!
+ + System.getenv("PORT") + "/base/"
  */
 public class App {
 
-    private static final URI BASE_URI = URI.create("http://0.0.0.0:" + System.getenv("PORT") + "/base/");
+    private static final URI BASE_URI = URI.create("http://0.0.0.0:8080");
     public static final String ROOT_PATH = "helloworld";
 
     public static void main(String[] args) {
