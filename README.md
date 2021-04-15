@@ -40,27 +40,29 @@
 
 -->
 
-Hello World Example
-===================
+-   <http://localhost:8080/helloworld>
 
-This example demonstrates Hello World example. JAX-RS resource returns the usual text
+# test-jersey
+Example web app built with Express
 
-Contents
---------
+## Requirements
 
-The mapping of the URI path space is presented in the following table:
+* Install `docker` and `docker-compose`
+* Sign up for [Resurface Pilot Edition](https://resurface.io/pilot-edition) access
 
-URI path             | Resource class      | HTTP methods | Notes
--------------------- | ------------------- | ------------ | --------------------------------------------------------
-**_/helloworld_**    | HelloWorldResource  |  GET         |  Returns `Hello World!`
+## Ports Used
 
-Running the Example
--------------------
+* 80 - GraphQL API
+* 4002 - Resurface API Explorer
+* 4001 - Resurface microservice
+* 4000 - Trino database UI
 
-Run the example as follows:
+## Deploy Locally
 
->     mvn clean compile exec:java
-
-This deploys the example using [Grizzly](http://grizzly.java.net/) container.
-
--   <http://localhost:8080/base/helloworld>
+```
+make start     # rebuild and start containers
+make ping      # make simple ping request
+make bash      # open shell session
+make logs      # follow container logs
+make stop      # halt and remove containers
+```
