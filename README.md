@@ -3,8 +3,8 @@ Example REST API built with Jersey
 
 ## Requirements
 
-* Install `docker` and `docker-compose`
-* Sign up for [Resurface Pilot Edition](https://resurface.io/pilot-edition) access
+* docker
+* docker-compose
 
 ## Ports Used
 
