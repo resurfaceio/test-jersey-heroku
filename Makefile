@@ -1,7 +1,7 @@
 PROJECT_NAME=jersey
 
 start:
-	@docker stop resurface
+	@docker stop resurface || true
 	@docker build -t test-jersey --no-cache .
 	@docker-compose up --detach
 
@@ -17,4 +17,8 @@ logs:
 	@docker logs -f test_jersey_app
 
 ping:
-	@curl "http://localhost/ping"
+	@curl "http://localhost/helloworld"
+
+restart:
+	@docker-compose stop
+	@docker-compose up

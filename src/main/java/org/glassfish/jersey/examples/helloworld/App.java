@@ -40,19 +40,19 @@
 
 package org.glassfish.jersey.examples.helloworld;
 
+import io.resurface.HttpRules;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+
 import java.io.IOException;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
-
-import org.glassfish.grizzly.http.server.HttpServer;
-
 /**
  * Hello world!
- + System.getenv("PORT") + "/base/"
+ * + System.getenv("PORT") + "/base/"
  */
 public class App {
 
@@ -61,25 +61,20 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            System.out.println("\"Hello World\" Jersey Example App");
-
+            // register logger
             final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            resourceConfig.register(new io.resurface.HttpLoggerForJersey("$LOGGER_URL", "include debug"));
-            final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    server.shutdownNow();
-                }
-            }));
-            server.start();
+            HttpRules.setDefaultRules("include debug");
+            resourceConfig.register(new io.resurface.HttpLoggerForJersey("http://resurface:4001/message"));
 
-            System.out.println(String.format("Application started.\nTry out %s%s\nStop the application using CTRL+C",
-                    BASE_URI, ROOT_PATH));
+            // start server
+            final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
+            Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
+            server.start();
+            System.out.printf("Application started.\nTry out %s/%s\nStop the application using CTRL+C%n", BASE_URI, ROOT_PATH);
             Thread.currentThread().join();
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+
 }
