@@ -8,7 +8,7 @@ start:
 stop:
 	@docker-compose stop
 	@docker-compose down --volumes
-	@docker image rmi -f test-jersey:latest
+	@docker image rmi -f test-jersey
 
 bash:
 	@docker exec -it jersey bash

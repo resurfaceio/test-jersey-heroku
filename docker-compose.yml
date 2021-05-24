@@ -10,9 +10,8 @@ services:
       - '4002:4002'
 
   jersey:
-    image: test-jersey:latest
+    image: test-jersey
     container_name: test_jersey_app
-    command: mvn clean compile exec:java
     ports:
       - '80:8080'
     env_file:

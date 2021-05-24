@@ -16,3 +16,4 @@ RUN mvn package
 
 # local application port
 EXPOSE 8080
+CMD mvn clean compile exec:java
