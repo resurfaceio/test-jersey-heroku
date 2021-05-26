@@ -11,7 +11,7 @@ services:
 
   jersey:
     image: test-jersey
-    container_name: test_jersey_app
+    container_name: jersey
     ports:
       - '80:8080'
     env_file:

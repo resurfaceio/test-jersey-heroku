@@ -14,11 +14,11 @@ bash:
 	@docker exec -it jersey bash
 
 logs:
-	@docker logs -f test_jersey_app
+	@docker logs -f jersey
 
 ping:
 	@curl "http://localhost/helloworld"
 
 restart:
 	@docker-compose stop
-	@docker-compose up
+	@docker-compose up --detach
