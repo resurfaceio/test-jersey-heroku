@@ -17,7 +17,7 @@ logs:
 	@docker logs -f jersey
 
 ping:
-	@curl "http://localhost/helloworld"
+	@curl "http://localhost/helloworld" -H 'Content-Type: text/plain' --data-binary 'Hello World'
 
 restart:
 	@docker-compose stop
