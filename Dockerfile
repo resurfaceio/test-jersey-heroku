@@ -1,7 +1,6 @@
-FROM maven:3.3.9-jdk-8
+FROM resurfaceio/python-maven:2.3.0
 RUN mkdir -p /app
 WORKDIR /app
-COPY pom.xml /app/
-COPY src /app/src
+ADD . /app
 EXPOSE 8080
 CMD mvn package exec:java
